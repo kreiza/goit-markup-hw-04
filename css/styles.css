@@ -93,11 +93,15 @@ button {
 .header {
     border-bottom: 1px solid var(--cornflower);
     background-color: var(--white);
+    /* вимога: тінь для хедера */
+    box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .header-inner {
     display: flex;
-    align-items: center;
+    align-items: baseline; /* вимога: baseline */
 }
 
 .main-nav {
@@ -189,9 +193,9 @@ button {
 
     min-height: 600px;
     background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-    url("../images/hero/group-people-working-website-template-1x.jpg");
+    url("../images/hero/img.jpg");
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center; /* вимога: center */
     background-size: cover;
     text-align: center;
 }
@@ -199,7 +203,7 @@ button {
 @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     .hero {
         background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-        url("../images/hero/group-people-working-website-template-2x.jpg");
+        url("../images/hero/img.jpg");
     }
 }
 
@@ -233,8 +237,8 @@ button {
     min-width: 169px;
     border-radius: 4px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* вимога: тільки background-color у transition */
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover,
@@ -285,6 +289,11 @@ button {
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* соц-іконки повинні мати fill із змінної #f4f4fd */
+.icon-social {
+    fill: var(--cloud);
+}
+
 .feature-title {
     font-weight: 500;
     font-size: 20px;
@@ -314,8 +323,15 @@ button {
 .team-item {
     background-color: var(--white);
     width: calc((100% - 3 * var(--gap)) / 4);
-    border-radius: 0 0 4px 4px; /* з макета: лише знизу */
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08); /* постійна тінь (C3) */
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08); /* базова тінь */
+}
+
+/* вимога: для першого елемента списку команди конкретна тінь */
+.team-item:first-child {
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .team-meta {
@@ -345,11 +361,18 @@ button {
     margin-top: 8px;
 }
 
-.social-link {
+/* li з класом (мін 3 символи тощо) */
+.social-item {
     width: 40px;
     height: 40px;
+}
+
+/* вимоги до посилання: display:flex; width/height 100%; коло; фон, тощо */
+.social-link {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    display: inline-flex;
+    display: flex; /* вимога: display:flex */
     align-items: center;
     justify-content: center;
     background-color: var(--iris);
@@ -359,7 +382,7 @@ button {
 
 .social-link:hover,
 .social-link:focus {
-    background-color: #404bbf;
+    background-color: #31d0aa; /* вимога для hover/focus */
 }
 
 /* ===================== */
@@ -379,36 +402,41 @@ button {
 
 .portfolio-card {
     display: block;
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /* вимога */
 }
 
+/* вимога: тінь при hover у вказаному порядку */
 .portfolio-card:hover,
 .portfolio-card:focus {
-    box-shadow: 0 2px 1px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16),
-    0 1px 6px rgba(46, 47, 66, 0.08);
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-thumb {
-    position: relative;
-    overflow: hidden;
+    position: relative;      /* вимога */
+    overflow: hidden;        /* вимога */
 }
 
 .overlay {
-    position: absolute;
+    position: absolute;      /* вимога */
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 40px 32px;
-    background-color: rgba(77, 90, 229, 0.9);
-    color: var(--cloud);
-    transform: translateY(100%); /* знизу (C10) */
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    top: 0;                  /* вимога */
+    width: 100%;             /* вимога */
+    height: 100%;            /* вимога */
+    padding: 40px 32px;      /* вимога */
+    background-color: #4d5ae5; /* вимога: суцільний колір */
+    color: var(--cloud);     /* змінна з #f4f4fd */
+    font-size: 16px;         /* вимога */
+    line-height: 1.5;        /* вимога */
+    letter-spacing: 0.02em;  /* вимога */
+    transform: translateY(100%); /* вимога */
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* вимога */
 }
 
-.portfolio-card:hover .overlay,
-.portfolio-card:focus .overlay {
-    transform: translateY(0%); /* виїжджає вгору (C9) */
+/* вимога: при hover на елемент списку параграф зсувається */
+.portfolio-item:hover .overlay {
+    transform: translateY(0%);
 }
 
 .portfolio-meta {
@@ -444,11 +472,14 @@ button {
     padding-bottom: 100px;
 }
 
+/* вимога: div з display:flex та align-items: baseline */
 .footer-inner {
-    display: grid;
-    grid-template-columns: 264px auto;
-    gap: 120px;
-    align-items: start;
+    display: flex;
+    align-items: baseline;
+}
+
+.footer-info {
+    margin-right: 120px; /* вимога */
 }
 
 .footer-logo {
@@ -475,16 +506,24 @@ button {
 }
 
 .footer-social-title {
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    margin-bottom: 16px;
+    font-weight: 500;     /* вимога */
+    font-size: 16px;      /* вимога */
+    line-height: 1.5;     /* вимога */
+    letter-spacing: 0.02em; /* вимога */
+    color: var(--white);  /* вимога (#FFFFFF через змінну) */
+    margin-bottom: 16px;  /* вимога */
+}
+
+/* у футері відступи між елементами списку соцмереж = 16px */
+.site-footer .socials {
+    gap: 16px;
+    justify-content: flex-start;
 }
 
 /* ===================== */
 /* Misc                  */
 /* ===================== */
-/* адаптивні дрібниці (не обов'язково для ДЗ, але корисно) */
+/* адаптивні дрібниці */
 @media (max-width: 1199.98px) {
     .features-list,
     .team-list,
