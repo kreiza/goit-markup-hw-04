@@ -93,7 +93,7 @@ button {
 .header {
     border-bottom: 1px solid var(--cornflower);
     background-color: var(--white);
-    /* вимога: тінь для хедера */
+    /* тінь для хедера */
     box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 1px 6px rgba(46, 47, 66, 0.08);
@@ -101,7 +101,7 @@ button {
 
 .header-inner {
     display: flex;
-    align-items: baseline; /* вимога: baseline */
+    align-items: baseline;
 }
 
 .main-nav {
@@ -144,7 +144,7 @@ button {
     color: #404bbf;
 }
 
-/* активна сторінка (C8) */
+/* активна сторінка */
 .menu-link.current {
     color: #404bbf;
 }
@@ -183,10 +183,9 @@ button {
 }
 
 /* ===================== */
-/* Hero (C1, C2)         */
+/* Hero                  */
 /* ===================== */
 .hero {
-    /* не ширше за 1440px, щоб фон не розтягувався більше оригіналу */
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
@@ -260,7 +259,7 @@ button {
 }
 
 /* ===================== */
-/* Features (B4)         */
+/* Features              */
 /* ===================== */
 .features-list {
     display: flex;
@@ -280,7 +279,7 @@ button {
     border: 1px solid #8e8f99;
     border-radius: 4px;
     background-color: var(--cloud);
-    color: var(--iris); /* іконка виглядатиме фіолетовою через currentColor */
+    color: var(--iris);
 }
 
 .icon {
@@ -289,27 +288,13 @@ button {
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* соц-іконки повинні мати fill із змінної #f4f4fd */
+/* соц-іконки повинні мати fill зі змінної #f4f4fd */
 .icon-social {
     fill: var(--cloud);
 }
 
-.feature-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-    color: var(--navy);
-    margin-bottom: 8px;
-}
-
-.feature-text {
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-}
-
 /* ===================== */
-/* Team                  */
+/* Team (Секція 3)       */
 /* ===================== */
 .team {
     background-color: var(--cloud);
@@ -327,8 +312,15 @@ button {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08); /* базова тінь */
 }
 
-/* вимога: для першого елемента списку команди конкретна тінь */
+/* перший елемент: спеціальна тінь */
 .team-item:first-child {
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+/* тінь при hover на li у секції 3 */
+.team-item:hover {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
@@ -361,18 +353,18 @@ button {
     margin-top: 8px;
 }
 
-/* li з класом (мін 3 символи тощо) */
+/* li з валідним класом */
 .social-item {
     width: 40px;
     height: 40px;
 }
 
-/* вимоги до посилання: display:flex; width/height 100%; коло; фон, тощо */
+/* посилання: display:flex; центрування; коло; transition */
 .social-link {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    display: flex; /* вимога: display:flex */
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--iris);
@@ -380,13 +372,14 @@ button {
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.social-link:hover,
-.social-link:focus {
-    background-color: #31d0aa; /* вимога для hover/focus */
+/* у секції 3: hover/focus = #404bbf */
+.team .social-link:hover,
+.team .social-link:focus {
+    background-color: #404bbf;
 }
 
 /* ===================== */
-/* Portfolio             */
+/* Portfolio (Секція 4)  */
 /* ===================== */
 .portfolio-list {
     display: flex;
@@ -402,10 +395,11 @@ button {
 
 .portfolio-card {
     display: block;
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); /* вимога */
+    /* перший пункт має цей клас, де визначено потрібний transition */
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* вимога: тінь при hover у вказаному порядку */
+/* тінь при hover/focus */
 .portfolio-card:hover,
 .portfolio-card:focus {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
@@ -413,28 +407,30 @@ button {
     0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
+/* контейнер з картинкою */
 .portfolio-thumb {
-    position: relative;      /* вимога */
-    overflow: hidden;        /* вимога */
+    position: relative; /* вимога */
+    overflow: hidden;   /* вимога */
 }
 
+/* параграф-оверлей у контейнері */
 .overlay {
-    position: absolute;      /* вимога */
+    position: absolute;   /* вимога */
     left: 0;
-    top: 0;                  /* вимога */
-    width: 100%;             /* вимога */
-    height: 100%;            /* вимога */
-    padding: 40px 32px;      /* вимога */
-    background-color: #4d5ae5; /* вимога: суцільний колір */
-    color: var(--cloud);     /* змінна з #f4f4fd */
-    font-size: 16px;         /* вимога */
-    line-height: 1.5;        /* вимога */
-    letter-spacing: 0.02em;  /* вимога */
+    top: 0;               /* вимога */
+    width: 100%;          /* вимога */
+    height: 100%;         /* вимога */
+    padding: 40px 32px;   /* вимога */
+    background-color: #4d5ae5; /* вимога */
+    color: var(--cloud);  /* змінна з #f4f4fd */
+    font-size: 16px;      /* вимога */
+    line-height: 1.5;     /* вимога */
+    letter-spacing: 0.02em; /* вимога */
     transform: translateY(100%); /* вимога */
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); /* вимога */
 }
 
-/* вимога: при hover на елемент списку параграф зсувається */
+/* при hover на елемент списку — показати оверлей */
 .portfolio-item:hover .overlay {
     transform: translateY(0%);
 }
@@ -472,14 +468,13 @@ button {
     padding-bottom: 100px;
 }
 
-/* вимога: div з display:flex та align-items: baseline */
 .footer-inner {
-    display: flex;
-    align-items: baseline;
+    display: flex;            /* вимога */
+    align-items: baseline;    /* вимога */
 }
 
 .footer-info {
-    margin-right: 120px; /* вимога */
+    margin-right: 120px;      /* вимога */
 }
 
 .footer-logo {
@@ -506,12 +501,12 @@ button {
 }
 
 .footer-social-title {
-    font-weight: 500;     /* вимога */
-    font-size: 16px;      /* вимога */
-    line-height: 1.5;     /* вимога */
+    font-weight: 500;       /* вимога */
+    font-size: 16px;        /* вимога */
+    line-height: 1.5;       /* вимога */
     letter-spacing: 0.02em; /* вимога */
-    color: var(--white);  /* вимога (#FFFFFF через змінну) */
-    margin-bottom: 16px;  /* вимога */
+    color: var(--white);    /* вимога */
+    margin-bottom: 16px;    /* вимога */
 }
 
 /* у футері відступи між елементами списку соцмереж = 16px */
@@ -520,10 +515,15 @@ button {
     justify-content: flex-start;
 }
 
+/* у футері: hover/focus = #31d0aa (залишаємо згідно вимог футера) */
+.site-footer .social-link:hover,
+.site-footer .social-link:focus {
+    background-color: #31d0aa;
+}
+
 /* ===================== */
 /* Misc                  */
 /* ===================== */
-/* адаптивні дрібниці */
 @media (max-width: 1199.98px) {
     .features-list,
     .team-list,
