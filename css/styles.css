@@ -171,11 +171,12 @@ button { cursor: pointer; }
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* перший елемент: клас із точною тінню */
+/* перший елемент: клас із точною тінню та transition */
 .team-shadow-first {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* тінь при hover саме на LI (значення з вимоги) */
@@ -211,41 +212,49 @@ button { cursor: pointer; }
 .portfolio-list {
     display: flex; flex-wrap: wrap; gap: var(--gap); row-gap: var(--row-gap);
 }
-.portfolio-item { width: calc((100% - 2 * var(--gap)) / 3); background-color: var(--white); }
+.portfolio-item { 
+    width: calc((100% - 2 * var(--gap)) / 3); 
+    background-color: var(--white); 
+}
 
 /* для 1-ї картки окремий клас з transition, як в умові */
 .pcard-transition {
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* (залишаємо також базове для решти карток) */
-.portfolio-card { display: block; transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); }
-
-/* тінь при hover/focus на картку */
-.portfolio-card:hover,
-.portfolio-card:focus {
+/* тінь при hover на елемент списку */
+.portfolio-item:hover {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 /* контейнер для зображення */
-.portfolio-thumb { position: relative; overflow: hidden; }
+.img-wrapper { 
+    position: relative; 
+    overflow: hidden; 
+}
 
 /* параграф-оверлей (точні стилі з вимог) */
 .overlay {
-    position: absolute; left: 0; top: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    top: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--cloud);
     padding: 40px 32px;
-    background-color: #4d5ae5; /* саме #4d5ae5 */
-    color: var(--cloud);       /* змінна = #f4f4fd */
-    font-size: 16px; line-height: 1.5; letter-spacing: 0.02em;
-    transform: translateY(100%); /* спочатку прихований знизу */
+    background-color: #4d5ae5;
+    height: 100%;
+    width: 100%;
+    transform: translateY(100%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* при hover на LI — підняти оверлей (translateY 0%) */
-.portfolio-item:hover .overlay { transform: translateY(0%); }
+.portfolio-item:hover .overlay { 
+    transform: translateY(0%); 
+}
 
 .portfolio-meta {
     border: 1px solid var(--cornflower); border-top: none;
